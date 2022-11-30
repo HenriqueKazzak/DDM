@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -9,8 +9,8 @@ class ImcBloc{
   var resultado = "Digite seu peso e sua altura para calcular";
 
   calculaImc(){
-    double altura = double.parse(alturaController.text);
-    double peso = double.parse(pesoController.text)/100;
+    double altura = double.parse(alturaController.text)/100;
+    double peso = double.parse(pesoController.text);
 
     var imc = peso/(altura*altura);
 

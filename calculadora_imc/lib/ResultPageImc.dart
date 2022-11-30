@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:calculadora_imc/ImcBloc.dart';
 import 'package:flutter/material.dart';
 

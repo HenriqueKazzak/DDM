@@ -11,7 +11,7 @@ class HomePageImc extends StatefulWidget {
 }
 
 class _HomePageImcState extends State<HomePageImc> {
-  ImcBloc imcBloc = ImcBloc();
+  var imcBloc = ImcBloc();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
