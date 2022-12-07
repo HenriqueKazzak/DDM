@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DDM.iml" filepath="$PROJECT_DIR$/.idea/DDM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slideShow/slide_show.iml" filepath="$PROJECT_DIR$/slideShow/slide_show.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slideShow/android/slide_show_android.iml" filepath="$PROJECT_DIR$/slideShow/android/slide_show_android.iml" />
+    </modules>
+  </component>
+</project>
