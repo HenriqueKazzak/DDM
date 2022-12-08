@@ -9,7 +9,7 @@ class HomeSlideShow extends StatefulWidget {
 }
 
 class _HomeSlideShowState extends State<HomeSlideShow> {
-  List<Image> imageList = [Image.network("https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc?auto=format&w=1000",width: 400),Image.network("https://media.moddb.com/images/members/5/4550/4549205/dog.jpg",width: 400),Image.network("http://images7.memedroid.com/images/UPLOADED894/5f0502441774c.jpeg",width: 400)];
+  List<Image> imageList = [Image.network("https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc?auto=format&w=1000", fit: BoxFit.fill),Image.network("https://media.moddb.com/images/members/5/4550/4549205/dog.jpg",fit: BoxFit.fill),Image.network("http://images7.memedroid.com/images/UPLOADED894/5f0502441774c.jpeg",fit: BoxFit.fill)];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +19,7 @@ class _HomeSlideShowState extends State<HomeSlideShow> {
       body:Center(
       child:ImageSlideshow(
         width: 400,
+        height: 500,
         isLoop: true,
         children: [
           for(var item in imageList)
