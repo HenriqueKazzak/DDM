@@ -2,6 +2,7 @@ import 'package:crud_app/dao/ClienteDao.dart';
 import 'package:flutter/material.dart';
 
 import 'AddClientePage.dart';
+import 'UpdateCliente.dart';
 
 class HomeClientes extends StatefulWidget {
   const HomeClientes({Key? key}) : super(key: key);
@@ -36,11 +37,11 @@ class _HomeClientesState extends State<HomeClientes> {
         title: Text("Lista de Clientes"),
       ),
       body: ListView.builder(
-          itemCount: allItems.length,
-          itemBuilder: (context, index) => ListTile(
-              title: Text(allItems[index]['cliente']),
-              subtitle: Text(allItems[index]['obs']),
-              trailing: SizedBox(
+        itemCount: allItems.length,
+        itemBuilder: (context, index) => ListTile(
+            title: Text(allItems[index]['cliente']),
+            subtitle: Text(allItems[index]['obs']),
+            trailing: SizedBox(
                 width: 100,
                 child: Row(children: [
                   IconButton(
@@ -52,10 +53,16 @@ class _HomeClientesState extends State<HomeClientes> {
                   ),
                   IconButton(
                     icon: Icon(Icons.edit),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              UpdateCliente(data: allItems[index]))
+                      );
+                    },
                   ),
-                ]),
-              ))),
+                ]))),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
