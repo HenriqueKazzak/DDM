@@ -14,7 +14,7 @@ class _HomeClientesState extends State<HomeClientes> {
   List<Map<String, dynamic>> allItems = [];
   var clienteDao = ClienteDao();
   bool _isLoading = true;
-  // This function is used to fetch all data from the database
+
   void _refreshData() async {
     final data = await clienteDao.getAllItems();
     setState(() {
@@ -26,7 +26,7 @@ class _HomeClientesState extends State<HomeClientes> {
   @override
   void initState() {
     super.initState();
-    _refreshData(); // Loading the data when the app starts
+    _refreshData();
   }
 
   @override
