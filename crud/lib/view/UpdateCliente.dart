@@ -3,16 +3,23 @@ import 'package:crud_app/view/HomeClientes.dart';
 import 'package:flutter/material.dart';
 
 class UpdateCliente extends StatefulWidget {
-  const UpdateCliente({Key? key, required this.data}) : super(key: key);
+  const UpdateCliente({Key? key, required this.id,required this.cliente,required this.email, required this.obs}) : super(key: key);
 
-  final List<Map<String,dynamic>> data;
+  final int id;
+  final String cliente;
+  final String email;
+  final String obs;
   @override
   State<UpdateCliente> createState() => _UpdateClienteState();
 }
 
 class _UpdateClienteState extends State<UpdateCliente> {
-  var clienteBloc = ClienteBloc();
-  var clienteDao = ClienteDao();
+
+    late TextEditingController clienteController = TextEditingController(text: widget.cliente);
+    late TextEditingController emailController = TextEditingController(text: widget.email);
+    late TextEditingController obsController = TextEditingController(text: widget.obs);
+    var clienteDao = ClienteDao();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +36,7 @@ class _UpdateClienteState extends State<UpdateCliente> {
                 decoration: const InputDecoration(
                     labelText: "Cliente"
                 ),
-                initialValue: widget.data[0]['cliente'].toString(),
-                controller: clienteBloc.nome,
+                controller: clienteController,
               ),
             ),
             Padding(
@@ -40,8 +46,7 @@ class _UpdateClienteState extends State<UpdateCliente> {
                 decoration: const InputDecoration(
                     labelText: "Email"
                 ),
-                initialValue: widget.data[0]['email'].toString(),
-                controller: clienteBloc.email,
+                controller: emailController,
               ),
             ),
             Padding(
@@ -51,8 +56,7 @@ class _UpdateClienteState extends State<UpdateCliente> {
                 decoration: const InputDecoration(
                     labelText: "Observação"
                 ),
-                initialValue: widget.data[0]['obs'].toString(),
-                controller: clienteBloc.obs,
+                controller: obsController,
               ),
             ),
             Padding(
@@ -62,7 +66,7 @@ class _UpdateClienteState extends State<UpdateCliente> {
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.indigo),
                 ),
                 onPressed: () {
-                    clienteDao.updateItem(widget.data[0]['id'],clienteBloc.nome.text, clienteBloc.email.text, clienteBloc.obs.text);
+                    clienteDao.updateItem(widget.id,widget.cliente,widget.email,widget.obs);
                   Navigator.push(context, MaterialPageRoute(builder:(context)=> const HomeClientes()));
                 },
                 child: const Text(style: TextStyle(color: Colors.white),
@@ -72,11 +76,6 @@ class _UpdateClienteState extends State<UpdateCliente> {
             )
           ],
         )
-    );;
+    );
   }
-}
-class ClienteBloc{
-  var nome = TextEditingController();
-  var email = TextEditingController();
-  var obs = TextEditingController();
 }

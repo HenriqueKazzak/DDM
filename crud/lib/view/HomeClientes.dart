@@ -57,7 +57,12 @@ class _HomeClientesState extends State<HomeClientes> {
                       Navigator.push(context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              UpdateCliente(data: allItems[index]))
+                              UpdateCliente(
+                                id: allItems[index]['id'],
+                                cliente: allItems[index]['cliente'],
+                                email: allItems[index]['email'],
+                                obs: allItems[index]['obs'],
+                              ))
                       );
                     },
                   ),

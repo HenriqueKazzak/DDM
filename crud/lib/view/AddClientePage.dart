@@ -28,7 +28,7 @@ class _AddClientePageState extends State<AddClientePage> {
                 decoration: const InputDecoration(
                     labelText: "Cliente"
                 ),
-                controller: clienteBloc.nome,
+                controller: clienteBloc.cliente,
               ),
             ),
             Padding(
@@ -58,8 +58,12 @@ class _AddClientePageState extends State<AddClientePage> {
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.indigo),
                 ),
                 onPressed: () {
-                    clienteDao.creatCliente(clienteBloc.nome.text, clienteBloc.email.text, clienteBloc.obs.text);
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=> const HomeClientes()));
+                    clienteDao.creatCliente(clienteBloc.cliente.text, clienteBloc.email.text, clienteBloc.obs.text);
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const HomeClientes())
+                    );
                 },
                 child: const Text(style: TextStyle(color: Colors.white),
                   "Salvar"
@@ -72,7 +76,7 @@ class _AddClientePageState extends State<AddClientePage> {
   }
 }
 class ClienteBloc{
-  var nome = TextEditingController();
+  var cliente = TextEditingController();
   var email = TextEditingController();
   var obs = TextEditingController();
 }
