@@ -56,8 +56,12 @@ class ClienteDao {
       int id, String? cliente, String? email, String? obs) async {
     final db = await ClienteDao.init();
     final itemUpdated = {'cliente': cliente, 'email': email, 'obs': obs};
+    print(id);
+    print(cliente);
+    print(email);
+    print(obs);
     final resultUpdate = await db
-        .update('clientes', itemUpdated, where: " id = ?", whereArgs: [id]);
+        .update('clientes', itemUpdated, where: "id=?", whereArgs: [id], conflictAlgorithm: ConflictAlgorithm.replace);
     return resultUpdate;
   }
 }

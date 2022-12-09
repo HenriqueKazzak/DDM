@@ -66,7 +66,7 @@ class _UpdateClienteState extends State<UpdateCliente> {
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.indigo),
                 ),
                 onPressed: () {
-                    clienteDao.updateItem(widget.id,widget.cliente,widget.email,widget.obs);
+                  clienteDao.updateItem(widget.id,clienteController.text,emailController.text,obsController.text);
                   Navigator.push(context, MaterialPageRoute(builder:(context)=> const HomeClientes()));
                 },
                 child: const Text(style: TextStyle(color: Colors.white),
