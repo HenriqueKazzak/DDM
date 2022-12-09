@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:installed_apps/app_info.dart';
 import 'package:installed_apps/installed_apps.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,11 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Launcher',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const HomeLauncher(title: 'Flutter Demo Home Page'),
+      home: const HomeLauncher(title: 'Launcher para o Romulo'),
     );
   }
 }
@@ -41,12 +42,22 @@ class _HomeLauncherState extends State<HomeLauncher> {
       body: FutureBuilder(
         future: InstalledApps.getInstalledApps(),
         builder: (context, snapshot) {
-          var apps = snapshot.data;
           return ListView.builder(
-              itemCount: apps?.length,
-              itemBuilder:(context, index) => ListTile(
-                title: Text(apps[index].),
-              ),
+              itemCount: snapshot.data?.length,
+              itemBuilder:(context, index) {
+                AppInfo app = snapshot.data![index];
+                return Card(
+                    child: ListTile(
+                  leading: CircleAvatar(
+                    child: Image.memory(app.icon!),
+                  ),
+                    title: Text(app.name!),
+                    subtitle: Text(app.packageName!), 
+                    onTap: () =>
+                          InstalledApps.startApp(app.packageName!),
+                  ),
+                );
+              }
           );
         },
       )
